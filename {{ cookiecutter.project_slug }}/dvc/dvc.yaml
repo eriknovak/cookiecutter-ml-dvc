@@ -1,0 +1,31 @@
+stages:
+  data_download:
+    cmd: python src/pipelines/download.py
+    outs:
+    - data/raw
+
+  data_processing:
+    cmd: python src/pipelines/data_processing.py
+    deps:
+    - data/raw
+    outs:
+    - data/processed
+
+  model_training:
+    cmd: python src/pipelines/model_training.py --model model1
+    deps:
+      - data/processed
+    outs:
+      - models/model1.pkl
+
+  model_evaluate:
+    cmd: python src/pipelines/model_evaluate.py --model model1
+    deps:
+      - models/model1.pkl
+    outs:
+      - results/metrics/model1.json
+    metrics:
+      - accuracy
+      - precision
+      - recall
+      - f1_score
