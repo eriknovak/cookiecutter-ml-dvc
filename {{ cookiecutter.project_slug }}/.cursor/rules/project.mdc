@@ -1,0 +1,138 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Project Structure and Rules
+
+## Overview
+This is a machine learning project template that uses DVC (Data Version Control) for experiment tracking and pipeline orchestration. The project follows a standardized structure for organizing code, data, experiments, and results.
+
+## Directory Structure
+
+```plaintext
+.
+├── data/               # Data storage
+│   ├── raw/            # Original, immutable data
+│   ├── processed/      # Cleaned and processed data
+│   └── final/          # Final, analysis-ready data
+├── experiments/        # DVC experiment definitions
+│   └── [task]/         # Task-specific experiments
+│       └── [dataset]/  # Dataset-specific configurations
+├── models/             # Trained model artifacts
+├── notebooks/          # Jupyter notebooks for analysis
+├── results/            # Experiment results and outputs
+├── scripts/            # Helper and utility scripts
+├── src/                # Source code
+│   └── [project_name]/ # Main package code
+├── tests/              # Test files
+├── .dvcignore          # DVC ignore patterns
+├── .gitignore          # Git ignore patterns
+├── LICENSE             # Project license
+├── Makefile            # Project commands
+├── README.md           # Project documentation
+├── requirements.txt    # Python dependencies
+└── pyproject.toml      # Project configuration
+```
+
+## Coding Rules and Guidelines
+
+### 1. Source Code Organization
+- All source code should be placed in the `src/` directory
+- Use proper Python package structure with `__init__.py` files
+- Follow PEP 8 style guidelines
+- Include type hints for function parameters and return values
+- Document all functions and classes using docstrings
+
+### 2. Data Management
+- Raw data should never be modified directly
+- All data processing steps should be tracked using DVC
+- Use appropriate data formats (e.g., parquet for tabular data)
+- Include data validation steps in processing pipelines
+- Document data schemas and transformations
+
+### 3. Experiment Management
+- Each experiment should have its own directory under `experiments/`
+- Use `dvc.yaml` for pipeline definitions
+- Store experiment parameters in `params.yaml`
+- Version control experiment configurations
+- Document experiment results and findings
+
+### 4. Testing
+- Write unit tests for all core functionality
+- Place tests in the `tests/` directory
+- Follow the same structure as the source code
+- Include integration tests for critical workflows
+- Maintain test coverage above 80%
+
+### 5. Documentation
+- Keep README.md up to date
+- Document all major components and workflows
+- Include setup instructions and requirements
+- Document API endpoints and usage
+- Maintain changelog for major updates
+
+### 6. Version Control
+- Use meaningful commit messages
+- Follow Git flow branching strategy
+- Keep commits atomic and focused
+- Review code before merging
+- Tag releases appropriately
+
+### 7. DVC Usage
+- Track all data files with DVC
+- Use DVC for experiment tracking
+- Version control model artifacts
+- Document pipeline dependencies
+- Use DVC metrics for experiment comparison
+
+### 8. Environment Management
+- Use virtual environments
+- Document environment setup
+- Use Makefile for common commands
+- Keep requirements.txt updated
+
+### 9. Notebook Usage
+- Use notebooks for exploration and analysis
+- Keep notebooks clean and well-documented
+- Convert successful experiments to scripts
+- Version control notebook outputs
+- Use consistent formatting
+
+### 10. Security
+- Never commit sensitive data
+- Use environment variables for secrets
+- Follow security best practices
+- Document security considerations
+- Regular security audits
+
+## Best Practices
+
+1. **Code Quality**
+   - Write clean, maintainable code
+   - Use meaningful variable names
+   - Keep functions small and focused
+   - Add appropriate comments
+   - Follow DRY principles
+
+2. **Performance**
+   - Profile code for bottlenecks
+   - Optimize critical paths
+   - Use appropriate data structures
+   - Consider memory usage
+   - Document performance considerations
+
+3. **Collaboration**
+   - Review code changes
+   - Document decisions
+   - Share knowledge
+   - Use consistent tools
+   - Follow team conventions
+
+4. **Maintenance**
+   - Regular dependency updates
+   - Code cleanup
+   - Documentation updates
+   - Performance monitoring
+   - Security patches
+

@@ -1,0 +1,12 @@
+datasets:
+  dataset1:
+    seed: 42
+
+models:
+  model1:
+    name: "model1"
+    training:
+      batch_size: 32
+      num_epochs: 10
+      learning_rate: 0.001
+      dropout: 0.2

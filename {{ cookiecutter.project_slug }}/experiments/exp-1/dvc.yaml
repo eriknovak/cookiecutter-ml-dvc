@@ -1,0 +1,58 @@
+vars:
+  - PROJECT_ROOT: ../../..
+
+stages:
+  download:
+    wdir: ${PROJECT_ROOT}
+    cmd: >-
+      python -m src.stages.download
+      --input-file data/raw/input.txt
+      --output-dir data/raw
+      --output-file downloaded_data.txt
+    outs:
+      - data/raw/downloaded_data.txt
+
+  preprocess:
+    wdir: ${PROJECT_ROOT}
+    cmd: >-
+      python -m src.stages.preprocess
+      --input-file data/raw/downloaded_data.txt
+      --output-dir data/processed
+      --output-file preprocessed_data.txt
+    deps:
+      - data/raw/downloaded_data.txt
+    outs:
+      - data/processed/preprocessed_data.txt
+
+  training:
+    wdir: ${PROJECT_ROOT}
+    cmd: >-
+      python -m src.stages.training
+      --input-file data/processed/preprocessed_data.txt
+      --output-dir models
+      --model-file model1.pkl
+      --params-file params.yaml
+    deps:
+      - data/processed/preprocessed_data.txt
+      - params.yaml
+    outs:
+      - models/model1.pkl
+
+  evaluation:
+    wdir: ${PROJECT_ROOT}
+    cmd: >-
+      python -m src.stages.evaluation
+      --input-file data/processed/preprocessed_data.txt
+      --model-file models/model1.pkl
+      --output-dir results/metrics
+      --metrics-file model1.json
+    deps:
+      - models/model1.pkl
+      - data/processed/preprocessed_data.txt
+    outs:
+      - results/metrics/model1.json
+    metrics:
+      - accuracy
+      - precision
+      - recall
+      - f1_score

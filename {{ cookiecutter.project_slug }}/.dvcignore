@@ -1,0 +1,29 @@
+# Files and directories that DVC should not consider in checksums and dependency tracking
+.git/
+.github/
+.gitignore
+.gitattributes
+
+# Common development environments
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# DVC's own files (which are already tracked by Git)
+.dvc/tmp/
+.dvc/cache/
+.dvc/plots/
+.dvc/config.local
+
+# Cookiecutter documentation and template files
+docs/
+LICENSE
+README.md
+CONTRIBUTING.md
+
+# Virtual environments (if you're using them)
+venv/
+env/
+.env/
+.venv/
