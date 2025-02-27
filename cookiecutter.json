@@ -1,0 +1,13 @@
+{
+    "project_name": "ML DVC Project",
+    "project_description": "A machine learning project with DVC integration",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "version": "0.1.0",
+    "python_version": "3.10",
+    "author_name": "Your Name",
+    "author_email": "your.email@example.com",
+    "maintainer_name": "{{ cookiecutter.author_name }}",
+    "maintainer_email": "{{ cookiecutter.author_email }}",
+    "github_username": "your-github-username",
+    "homepage": "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+}

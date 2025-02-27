@@ -1,0 +1,11 @@
+# Ignore all model files
+*.pkl
+*.h5
+*.pb
+*.onnx
+*.pt
+*.pth
+
+# Don't ignore .dvc files
+!*.dvc
+!.gitignore
